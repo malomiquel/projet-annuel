@@ -37,9 +37,35 @@ const joueursListe = [{
 
 module.exports = function (app) {
 
+    /**
+ * Valeur de retour
+ * @typedef {object} ScoredPlayer
+ * @property {string} label.required - Player name
+ * @property {string} club.required - Player's club name
+ * @property {number} pac.required - Pace
+ * @property {number} sho.required - Shooting
+ * @property {number} pas.required - Passing
+ * @property {number} dri.required - Dribbling
+ * @property {number} def.required - Defending
+ * @property {number} phy.required - Physicality
+ * @property {number} score.required - Global score
+ */
 
+    /**
+     * POST /player
+     * @summary Create a player
+     * @property {string} label.required - Player name
+     * @property {string} club.required - Player's club name
+     * @property {number} pac.required - Pace
+     * @property {number} sho.required - Shooting
+     * @property {number} pas.required - Passing
+     * @property {number} dri.required - Dribbling
+     * @property {number} def.required - Defending
+     * @property {number} phy.required - Physicality
+     * @return {ScoredPlayer} 200 - Succes - application/json
+     */
     app.post('/player',
-            body('libelle').trim().isLength({ min: 5 }),
+            body('label').trim().isLength({ min: 5 }),
             body('club').trim().isLength({min : 2}),
             body('pac').isNumeric(),
             body('sho').isNumeric(),
@@ -48,7 +74,7 @@ module.exports = function (app) {
             body('def').isNumeric(),
             body('phy').isNumeric(), 
             (req, res) => {
-                
+
                 console.log(req.body)
 
                 const errors = validationResult(req);
@@ -61,6 +87,11 @@ module.exports = function (app) {
                 res.send(req.body).status(200)
     })
 
+    /**
+     * GET /players
+     * @summary Player list, sorted by highest score
+     * @return {array<ScoredPlayer>} 200 - Succes - application/json
+     */
     app.get('/players', (req, res) => {
             res.send(joueursListe.sort((j1, j2) =>  j2.score - j1.score)).status(200);
         })
