@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Player } from 'src/app/model/player';
+import { PlayerBack } from 'src/app/model/playerBack';
 import { PlayerService } from 'src/app/services/players.service';
 
 @Component({
@@ -8,10 +10,17 @@ import { PlayerService } from 'src/app/services/players.service';
   styleUrls: ['./page-liste.component.css']
 })
 export class PageListeComponent implements OnInit {
-  constructor(public PlayerService: PlayerService) {
-
+  constructor(public PlayerService: PlayerService, private http: HttpClient) {
+    this.http.get<PlayerBack[]>(`http://localhost:3333/players`)
+      .subscribe((data) => {
+        console.log(data);
+        this.PlayerService.tabPlayers = data;
+      });
   }
+
   ngOnInit(): void {
   }
+
+  
 
 }

@@ -17,8 +17,4 @@ export class PlayerComponent implements OnInit {
   
   ngOnInit(): void {
   }
-
-  average(player : Player) {
-    return Math.round((player.pac + player.sho + player.pas + player.dri + player.def + player.phy) / 6);
-  }
 }
