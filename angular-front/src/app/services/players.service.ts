@@ -7,7 +7,7 @@ import { Player } from '../model/player';
 export class PlayerService {
   public tabPlayers : Player[] = [
     {
-      playerName : "Test",
+      label : "Test",
       club : "Mancity",
       pac: 80,
       sho: 79,
@@ -17,7 +17,7 @@ export class PlayerService {
       phy: 80,
     },
     {
-      playerName : "Test2",
+      label : "Test2",
       club : "Mancity",
       pac: 80,
       sho: 79,
@@ -27,7 +27,7 @@ export class PlayerService {
       phy: 80,
     },
     {
-      playerName : "Test3",
+      label : "Test3",
       club : "Mancity",
       pac: 80,
       sho: 90,
