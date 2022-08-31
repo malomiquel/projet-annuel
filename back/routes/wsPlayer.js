@@ -1,55 +1,7 @@
 const { body, validationResult } = require('express-validator');
-
-const joueursListe = [{
-    libelle: 'Clem',
-    pac: 10,
-    sho: 12,
-    pas: 14,
-    dri: 16,
-    def: 18,
-    phy: 30,
-    score: 10,
-    club: 'ESGI'
-},
-    {
-        libelle: 'Teo',
-        pac: 10,
-        sho: 12,
-        pas: 14,
-        dri: 16,
-        def: 18,
-        phy: 50,
-        score: 20,
-        club: 'ESGI'
-    },
-    {
-        libelle: 'Malo',
-        pac: 10,
-        sho: 12,
-        pas: 14,
-        dri: 16,
-        def: 18,
-        phy: 30,
-        score: 30,
-        club: 'ESGI'
-    }
-];
+const Player = require('../models/player.js');
 
 module.exports = function (app) {
-
-    /**
- * Valeur de retour
- * @typedef {object} ScoredPlayer
- * @property {string} label.required - Player name
- * @property {string} club.required - Player's club name
- * @property {number} pac.required - Pace
- * @property {number} sho.required - Shooting
- * @property {number} pas.required - Passing
- * @property {number} dri.required - Dribbling
- * @property {number} def.required - Defending
- * @property {number} phy.required - Physicality
- * @property {number} score.required - Global score
- */
 
     /**
      * POST /player
@@ -62,7 +14,7 @@ module.exports = function (app) {
      * @property {number} dri.required - Dribbling
      * @property {number} def.required - Defending
      * @property {number} phy.required - Physicality
-     * @return {ScoredPlayer} 200 - Succes - application/json
+     * @return {Player} 200 - Succes - application/json
      */
     app.post('/player',
             body('label').trim().isLength({ min: 5 }),
@@ -83,17 +35,29 @@ module.exports = function (app) {
                 }
                         
                 req.body.score = calculeScore(req.body)
-                joueursListe.push(req.body)
-                res.send(req.body).status(200)
+                const player = new Player(req.body);
+                player
+                    .save()
+                    .then(result => {
+                        res.send(player).status(200)
+                    })
+                    .catch(err => {
+                        console.log(err);
+                        res.send(err).status(400)
+                    });
+               
     })
 
     /**
      * GET /players
      * @summary Player list, sorted by highest score
-     * @return {array<ScoredPlayer>} 200 - Succes - application/json
+     * @return {array<Player>} 200 - Succes - application/json
      */
     app.get('/players', (req, res) => {
-            res.send(joueursListe.sort((j1, j2) =>  j2.score - j1.score)).status(200);
+
+            Player.find().then(r => {
+                res.send(r.sort((j1, j2) => j2.score - j1.score)).status(200);
+            }).catch(e => res.send(e).status(400))
         })
 };
 

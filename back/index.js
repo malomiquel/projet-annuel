@@ -2,6 +2,8 @@ const express = require('express')
 const fs = require('fs')
 const bodyParser = require('body-parser')
 const expressJSDocSwagger = require('express-jsdoc-swagger');
+const mongoose = require('mongoose')
+require('dotenv').config()
 
 //Swagger options
 const options = {
@@ -57,7 +59,16 @@ fs.readdirSync(__dirname + "/routes").forEach((file) => {
     require(__dirname + "/routes/" + file)(app);
 });
 
-//Start server
-app.listen(port, () => {
-    console.log(`App listening on port ${port}`)
-})
+console.log( process.env.DB_STRING)
+
+//Database connection
+mongoose
+    .connect(
+        process.env.DB_STRING
+    )
+    .then(result => {  //We're waiting for the db before launching the server
+        app.listen(port, () => {
+            console.log(`App listening on port ${port}`)
+        })
+    })
+    .catch(err => console.log(err));
