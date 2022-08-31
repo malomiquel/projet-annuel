@@ -59,8 +59,6 @@ fs.readdirSync(__dirname + "/routes").forEach((file) => {
     require(__dirname + "/routes/" + file)(app);
 });
 
-console.log( process.env.DB_STRING)
-
 //Database connection
 mongoose
     .connect(

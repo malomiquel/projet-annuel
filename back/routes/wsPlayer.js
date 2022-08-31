@@ -59,6 +59,37 @@ module.exports = function (app) {
                 res.send(r.sort((j1, j2) => j2.score - j1.score)).status(200);
             }).catch(e => res.send(e).status(400))
         })
+
+
+    /**
+    * DELETE /player/{id}
+    * @summary delete player by id
+    * @param {string} id.path - Player Id
+    * @return {string} 200 - Succes - application/json
+    */
+    app.delete('/player/:id', (req, res) => {
+        const playerId = req.params.id;
+        Player.findById(playerId)
+            .then(player => {
+                if (!player) {
+                    const error = new Error('Could not find player.');
+                    error.statusCode = 404;
+                    throw error;
+                }
+                return Player.findByIdAndRemove(playerId);
+            })
+            .then(result => {
+                console.log(result);
+                res.status(200).json({ message: 'Deleted player.' });
+            })
+            .catch(err => {
+                if (!err.statusCode) {
+                    err.statusCode = 500;
+                }
+                res.send(err).status(err.statusCode)
+            });
+    });
+
 };
 
 function calculeScore({pac, sho, pas, dri, def, phy}){
