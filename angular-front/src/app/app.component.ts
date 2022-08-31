@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Player } from './model/player';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'projet-annuel';
+
 }
