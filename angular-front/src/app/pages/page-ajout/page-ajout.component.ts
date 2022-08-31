@@ -41,12 +41,25 @@ export class PageAjoutComponent implements OnInit {
       def! : this.def,
       phy! : this.phy,
     };
+
+    // Envoi du joueur vers l'API pour enregistrement dans la BDD et calcul du score du joueur
     this.http.post<PlayerBack>(`http://localhost:3333/player`, newPlayer)
     .subscribe((data) => {
       console.log(data); 
+      let newPlayerBack : PlayerBack = {
+        label! : data.label,
+        club! : data.club,
+        pac! : data.pac,
+        sho! : data.sho,
+        pas! : data.pas,
+        dri! : data.dri,
+        def! : data.def,
+        phy! : data.phy,
+        score! : data.score,
+      };
+      this.playerService.tabPlayers.push(newPlayerBack);
     })
 
-    this.playerService.tabPlayers.push(newPlayer);
     this.mySwal.fire().then(() => {
       this.router.navigateByUrl("liste");
     });

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Player } from '../model/player';
+import { PlayerBack } from '../model/playerBack';
 
 @Component({
   selector: 'app-player',
@@ -7,7 +8,7 @@ import { Player } from '../model/player';
   styleUrls: ['./player.component.css']
 })
 export class PlayerComponent implements OnInit {
-  @Input() player! : Player;
+  @Input() player! : PlayerBack;
   @Output() demandeSuppression : EventEmitter<void> = new EventEmitter();
 
   constructor() {
