@@ -1,18 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddPlayerComponent } from './add-player.component';
+import { PageAjoutComponent } from './page-ajout.component';
 
-describe('AddPlayerComponent', () => {
-  let component: AddPlayerComponent;
-  let fixture: ComponentFixture<AddPlayerComponent>;
+describe('PageAjoutComponent', () => {
+  let component: PageAjoutComponent;
+  let fixture: ComponentFixture<PageAjoutComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddPlayerComponent ]
+      declarations: [ PageAjoutComponent ]
     })
     .compileComponents();
+  });
 
-    fixture = TestBed.createComponent(AddPlayerComponent);
+  beforeEach(() => {
+    fixture = TestBed.createComponent(PageAjoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
