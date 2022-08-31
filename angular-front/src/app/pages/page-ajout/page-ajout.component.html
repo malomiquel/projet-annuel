@@ -1,7 +1,7 @@
 <form #formAjout="ngForm" (ngSubmit)="addPlayer()">
   <div class="mb-3">
-    <label for="inputLibelle" class="form-label">PLayer Name</label>
-    <input type="text" class="form-control" id="inputplayerName" name="playerName" [(ngModel)]="playerName" required>
+    <label for="inputLibelle" class="form-label">Player Name</label>
+    <input type="text" class="form-control" id="inputplayerName" name="playerName" [(ngModel)]="label" required>
   </div>
   <div class="mb-3">
     <label for="inputQuantite" class="form-label">Club</label>
@@ -33,5 +33,4 @@
   </div>
   <button type="submit" class="btn btn-primary" [disabled]="!formAjout.valid">Ajouter</button>
 </form>
-
--- <swal #mySwal title="Bravo !" text="Votre produit a été ajouté :)" icon="success"></swal>
+<swal #mySwal title="Bravo !" text="Votre produit a été ajouté :)" icon="success"></swal>

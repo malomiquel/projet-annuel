@@ -1,4 +1,4 @@
-export type Player = {
+export type PlayerBack = {
   label : string,
   club : string,
   pac: number,
@@ -7,4 +7,5 @@ export type Player = {
   dri: number,
   def: number,
   phy: number
+  score: number
 }

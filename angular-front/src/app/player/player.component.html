@@ -1,9 +1,17 @@
 <div class="card">
     <div class="card-header">
-      <span>{{ player.playerName }} </span>
+      <span>{{ player.label }} </span>
     </div>
     <div class="card-body">
       <p>Club : {{ player.club }}</p>
-      <p>Note Génerale : {{ average(player) }}</p>
-    </div>
+      <p>Note génerale</p>
+      <div class="test">
+          <p>Pace : {{ player.pac }}</p>
+          <p>Dribble : {{ player.dri }}</p>
+          <p>Shot : {{ player.sho }}</p>
+          <p>Defense : {{ player.def }}</p>
+          <p>Pass : {{ player.pas }}</p>
+          <p>Physics : {{ player.phy }}</p>
+      </div>
+  </div>
   </div>
