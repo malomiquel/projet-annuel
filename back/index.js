@@ -6,8 +6,7 @@ const port = 3333
 
 app.use(bodyParser.json())
 
-//On authorise les requêtes cross-origin  
-////Permet a un front d'appeler les webservices
+//Allowing cross-origin  
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader(
@@ -23,5 +22,5 @@ fs.readdirSync(__dirname + "/routes").forEach((file) => {
 });
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+    console.log(`App listening on port ${port}`)
 })

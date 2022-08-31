@@ -1,4 +1,5 @@
-const { body } = require('express-validator');
+const { body, validationResult } = require('express-validator');
+
 const joueursListe = [{
     libelle: 'Clem',
     pac: 10,
@@ -32,30 +33,35 @@ const joueursListe = [{
         score: 30,
         club: 'ESGI'
     }
-
 ];
 
 module.exports = function (app) {
-    app.post('/joueur',
-        [
-            body('libelle')
-                .trim()
-                .isLength({ min: 5 }),
+
+
+    app.post('/player',
+            body('libelle').trim().isLength({ min: 5 }),
             body('club').trim().isLength({min : 2}),
             body('pac').isNumeric(),
             body('sho').isNumeric(),
             body('pas').isNumeric(),
             body('dri').isNumeric(),
             body('def').isNumeric(),
-            body('phy').isNumeric(),
-    ], (req, res) => {
-        console.log(req.body)
-        req.body.score = calculeScore(req.body)
-        joueursListe.push(req.body)
-        res.send(req.body).status(200)
+            body('phy').isNumeric(), 
+            (req, res) => {
+                
+                console.log(req.body)
+
+                const errors = validationResult(req);
+                if (!errors.isEmpty()) {
+                    return res.status(400).json({ errors: errors.array() });
+                }
+                        
+                req.body.score = calculeScore(req.body)
+                joueursListe.push(req.body)
+                res.send(req.body).status(200)
     })
 
-    app.get('/joueurs', (req, res) => {
+    app.get('/players', (req, res) => {
             res.send(joueursListe.sort((j1, j2) =>  j2.score - j1.score)).status(200);
         })
 };
