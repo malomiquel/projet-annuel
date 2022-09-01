@@ -18,16 +18,28 @@ export class PageListeComponent implements OnInit {
       });
   }
 
+  //supprimerPlayer(player : PlayerBack) {
+  //  let positionPlayer = this.PlayerService.tabPlayers.indexOf(player);
+  //  if (positionPlayer != -1) {
+  //    this.http.delete<number>(`http://localhost:3333/player/${positionPlayer}`)
+  //      .subscribe(() => {
+  //        this.PlayerService.tabPlayers.splice(positionPlayer, 1);
+  //      }
+  //      );
+  //  }
+  //}
+
   supprimerPlayer(player : PlayerBack) {
     let positionPlayer = this.PlayerService.tabPlayers.indexOf(player);
     if (positionPlayer != -1) {
-      this.http.delete<number>(`http://localhost:3333/player/${positionPlayer}`)
+      this.http.delete<number>(`http://localhost:3333/player/${player._id}`)
         .subscribe(() => {
           this.PlayerService.tabPlayers.splice(positionPlayer, 1);
         }
         );
     }
   }
+
 
   ngOnInit(): void {
   }

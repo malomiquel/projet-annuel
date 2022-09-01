@@ -47,6 +47,7 @@ export class PageAjoutComponent implements OnInit {
     .subscribe((data) => {
       console.log(data); 
       let newPlayerBack : PlayerBack = {
+        _id: data._id,
         label! : data.label,
         club! : data.club,
         pac! : data.pac,

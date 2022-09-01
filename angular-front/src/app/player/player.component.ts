@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Player } from '../model/player';
 import { PlayerBack } from '../model/playerBack';
@@ -11,8 +12,7 @@ export class PlayerComponent implements OnInit {
   @Input() player! : PlayerBack;
   @Output() demandeSuppression : EventEmitter<void> = new EventEmitter();
 
-  constructor() {
-    
+  constructor(private http : HttpClient) {
   }
 
   ngOnInit(): void {
