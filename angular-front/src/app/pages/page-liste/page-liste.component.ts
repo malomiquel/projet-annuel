@@ -18,9 +18,18 @@ export class PageListeComponent implements OnInit {
       });
   }
 
-  ngOnInit(): void {
+  supprimerPlayer(player : PlayerBack) {
+    let positionPlayer = this.PlayerService.tabPlayers.indexOf(player);
+    if (positionPlayer != -1) {
+      this.http.delete<number>(`http://localhost:3333/player/${positionPlayer}`)
+        .subscribe(() => {
+          this.PlayerService.tabPlayers.splice(positionPlayer, 1);
+        }
+        );
+    }
   }
 
-  
+  ngOnInit(): void {
+  }
 
 }
