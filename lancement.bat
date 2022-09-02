@@ -1,13 +1,21 @@
-#!/bin/bash
-fonctiondelancementfront(){
+
+@echo off
+--fonctiondelancementfront(){
 	echo "Lancement du Front"
-	cd angular-front
+	cd ../angular-front
+	npm install
+	ng serve
+	cd ..
 
 	}
+	
 
-fonctiondelancementback
+fonctiondelancementback(){
 	echo "Lancement du back"
-	cd back
+	cd ../back
+	npm install
+	node index.js
+	cd ..
 	}
 
 fonctiondelancementfront
