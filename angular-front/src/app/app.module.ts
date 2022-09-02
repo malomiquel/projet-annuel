@@ -9,11 +9,12 @@ import { PlayerComponent } from './player/player.component';
 import { registerLocaleData  } from '@angular/common';
 
 import localeFr from '@angular/common/locales/fr';
-import { PoidsPipe } from './poids.pipe';
 import { PageListeComponent } from './pages/page-liste/page-liste.component';
 import { PageAjoutComponent } from './pages/page-ajout/page-ajout.component';
 import { FormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { HttpClientModule } from '@angular/common/http';
+
 registerLocaleData(localeFr);
 
 @NgModule({
@@ -21,7 +22,6 @@ registerLocaleData(localeFr);
     AppComponent,
     HeaderComponent,
     PlayerComponent,
-    PoidsPipe,
     PageListeComponent,
     PageAjoutComponent
   ],
@@ -30,7 +30,8 @@ registerLocaleData(localeFr);
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    SweetAlert2Module.forRoot()
+    SweetAlert2Module.forRoot(),
+    HttpClientModule
   ],
   providers: [ { provide: LOCALE_ID, useValue: 'fr' } ],
   bootstrap: [AppComponent]
