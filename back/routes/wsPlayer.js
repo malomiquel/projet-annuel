@@ -17,8 +17,8 @@ module.exports = function (app) {
      * @return {Player} 200 - Succes - application/json
      */
     app.post('/player',
-            body('label').trim().isLength({ min: 5 }),
-            body('club').trim().isLength({min : 2}),
+            body('label').trim().isLength({ min: 1 }),
+            body('club').trim().isLength({min : 1}),
             body('pac').isNumeric(),
             body('sho').isNumeric(),
             body('pas').isNumeric(),
