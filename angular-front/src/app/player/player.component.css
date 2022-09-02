@@ -14,3 +14,22 @@
     display: flex;
     justify-content: space-between;
 }
+
+.first{    
+    background-color: rgba(242,215,50,1);
+    box-shadow:  2px 2px 2px 1px rgba(0, 0, 0, .1);
+    background: linear-gradient(45deg,  rgba(242,215,12,1) 0%,rgba(255,255,255,1) 56%,rgba(252,235,0,1) 96%);
+}
+
+.second{
+    background-color: rgba(160,160,160,1);
+    box-shadow:  2px 2px 2px 1px rgba(0, 0, 0, .1);
+    background: linear-gradient(45deg,  rgba(160,160,160,1) 0%,rgba(232,232,232,1) 56%);
+}
+
+.third{
+    background-color: rgba(223,182,103,1);
+    box-shadow:  2px 2px 2px 1px rgba(0, 0, 0, .1);
+    background: linear-gradient(45deg,  rgba(223,182,103,1) 0%,rgba(249,243,232,1) 56%,rgba(231,192,116,1) 96%); 
+    
+}
