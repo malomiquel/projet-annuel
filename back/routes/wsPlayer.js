@@ -92,7 +92,7 @@ module.exports = function (app) {
 
 };
 
+
 function calculeScore({pac, sho, pas, dri, def, phy}){
-    console.log(pac + sho + pas + dri + def + phy)
     return Math.round((pac + sho + pas + dri + def + phy) / 6)
 }
