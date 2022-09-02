@@ -1,17 +1,18 @@
 <div class="card">
     <div class="card-header">
-      <span>{{ player.label }} </span>
+      <div>{{ player.label }} </div>
+      <div id="playerRanking"> {{position}} </div>
     </div>
     <div class="card-body">
       <p>Club : {{ player.club }}</p>
-      <p>Note génerale {{player.score }}</p>
-      <div class="test">
-          <p>Pace : {{ player.pac }}</p>
+      <p>Note génerale : {{player.score }}</p>
+      <div class="specs">
+          <p>Vitesse : {{ player.pac }}</p>
           <p>Dribble : {{ player.dri }}</p>
-          <p>Shot : {{ player.sho }}</p>
+          <p>Tir : {{ player.sho }}</p>
           <p>Defense : {{ player.def }}</p>
-          <p>Pass : {{ player.pas }}</p>
-          <p>Physics : {{ player.phy }}</p>
+          <p>Passe : {{ player.pas }}</p>
+          <p>Physique : {{ player.phy }}</p>
       </div>
       <button class="btn btn-danger" (click)="gererClic()">Supprimer</button>
   </div>
