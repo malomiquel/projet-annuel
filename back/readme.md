@@ -18,4 +18,4 @@ project
 ## Swagger Documentation
 To acces swagger doc: 
     - Start the server ($ node index.js)
-    - Check url: http://localhost:3000/api-docs
+    - Check url: http://localhost:3333/api-docs
