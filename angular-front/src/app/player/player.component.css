@@ -1,7 +1,16 @@
 .card-body{
     text-align: center;
 }
-.test{
+.specs{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+}
+
+.card{
+    margin : 5px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
 }

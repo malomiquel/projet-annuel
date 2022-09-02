@@ -1,6 +1,7 @@
-<div class="row p-2">
+<div class="row p-2" id="body">
   <ng-container *ngFor="let p of PlayerService.tabPlayers">
     <app-player [player]="p"
+    [position]="PlayerService.tabPlayers.indexOf(p) + 1" 
     class="col-md-3 p-0"
     (demandeSuppression)="supprimerPlayer(p)"
     >
