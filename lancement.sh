@@ -1,3 +1,3 @@
 #!/bin/bash
-bash lancementfront.sh
-bash lancementback.sh
+bash lancementfront.sh &
+bash lancementback.sh &
